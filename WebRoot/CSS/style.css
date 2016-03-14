@@ -1,0 +1,39 @@
+#scrollTable {
+width:100%;
+height:80%;
+background: #ffffff;
+}
+#scrollTable table {
+
+}
+#scrollTable table.thead{ 
+background-color:#a4bed4;
+	font-size: 12px;
+}
+#scrollTable table.thead th{
+
+	BORDER-left: #FFFFFF 1px solid;
+	BORDER-top: #FFFFFF 1px solid;
+	height:27px;
+	/*	font-weight:normal;*/
+	color:#000;
+	background-image: url(../images/th_bg.gif);
+	background-repeat:repeat-x;
+	background-color: #d2e6fe;
+}
+#scrollTable div{
+width:100%;
+height:96%;
+overflow:auto;
+}
+#scrollTable table.tbody{
+background-color:#a4bed4;
+	font-size: 12px;
+}
+#scrollTable table.tbody tr{
+	background-color:#ffffff;
+	height:27px;
+	}
+#scrollTable table.tbody tr.BGCgray{
+	background-color:#e3efff;
+	}

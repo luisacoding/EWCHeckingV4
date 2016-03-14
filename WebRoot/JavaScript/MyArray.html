@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyArray.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+    <button type="submit" onClick="shout()">Click me.</button>
+    <button type="submit" onClick="nowDate()">currentDate</button>
+    <input id="input" ></input>
+    <button onClick="getType()">typeof</button>
+    
+    <ul>
+    <li id="li" class="list">1</li>
+    <li class="list">2</li>
+    <li>3</li>
+    </ul>
+      <ul>
+  	<li>list</li>
+  	<li>list2</li>
+  	<li>list3</li>
+  </ul>
+  	
+  <ol>
+  	<li>olist</li>
+  	<li>olist2</li>
+  	<li>olist3</li>
+  </ol>
+    <script>
+    	function shout() {
+    		var beatles = Array("John","Paul","George","Ringo");
+    		for (var count = 0; count<beatles.length; count++) {
+    			alert(beatles[count]);
+    		}
+    	}
+    	
+    	function nowDate(){
+    		date = new Date();
+    		var input = document.getElementById("input");
+    		input.value=date;
+    	}
+    	
+    	function getType(){
+    		//alert(document.getElementsByClassName("list").length);
+    		//var but = document.getElementById("li");
+    		//alert(but.getElementsByTagName("*"));
+    		var li = MygetElementsByClassName(document,"list"); 
+    		alert(li.length);
+    	}
+    	
+    	// node DOM搜索起点
+    	function MygetElementsByClassName(node, classname){
+    		if(node.getElementsByClassName) {
+    			return node.getElementsByClassName(classname);
+    		} else {
+    			var results = new Array();
+    			var elems = node.getElementsByTagName("*");
+    			for (var i=0; i<elems.length; i++) {
+    				if(elems[i].className.indexOf(classname) != -1) {
+    					results[results.length] = elems[i];
+    				}
+    			}
+    			return results;
+    		}
+    	}
+    	
+    	var array = new Array();
+    	window.onload = popUp; //页面加载时调用
+    
+    	function countBodyChildren() {
+    		var body_element = document.getElementsByTagName("body")[0];
+    		alert(body_element.childNodes.length);
+ 			alert(body_element.nodeType);
+    	}
+    	
+    	function popUp(winURL){
+    		window.open(winURL,"popup","width=320,height=480");
+    	}
+    </script>
+  </body>
+</html>

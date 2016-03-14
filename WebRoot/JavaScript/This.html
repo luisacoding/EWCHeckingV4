@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>This.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  <script>
+  	window.onload = function () {
+  		function WhoAmI (){
+  			alert("I'm " + this.name + " of " + typeof(this) ); 
+  		};
+  		
+  		var lxtian = {name:"lxtian"};
+  		//lxtian.WhoAmI = WhoAmI;
+  		//lxtian.WhoAmI();
+  		//WhoAmI.call(lxtian);
+  		// 临时创建一个匿名对象，并设置属性后调用WhoAmI方法；
+  		({name:"nobody", WhoAmI : WhoAmI}).WhoAmI();
+  	}
+  	
+  	// 对象的创建javascript object notation(JSON)
+  	// JSON字符串转换为javascript对象： eval 函数
+  	// 创建一个没有任何属性的对象
+  	var o = {};
+  	
+  // 创建一个对象并设置属性及初始值
+  var person = {name:"Angle", age:18, married:false};
+  
+  // 创建一个对象并设置属性和方法
+  var speaker = {text : "Hello,World", say:function(){alert(this.text)} };
+  
+  // 创建一个对象，嵌套其他对象和对象数组等 
+  var company = {
+  	name : "MicroSoft",
+  	product : "software",
+  	chairman : {name:"Bill Gates", age:53, Married:true},
+  	employees : [ {name:"Angle", age:26, Married:false}, {name:"Hanson", age:32, Married: true} ],
+  	readme : function () {document.write(this.name + " product " + this.product)}; 
+  };
+  </script>
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+  </body>
+</html>

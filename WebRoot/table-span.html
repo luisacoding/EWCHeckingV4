@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>table-span.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+	table	{
+		border:	1;
+	}
+	#div1	{
+		width:	40px;
+		height:	20px;
+		background-color:	#0000ff;
+		padding:	20;
+	}
+	td	{
+		background-color:	#ffffff;
+	}
+	</style>
+  </head>
+  
+  <body>
+  <!-- 横跨两行 -->
+    <table  cellspacing="0" frame="above">
+    	<tr>
+    		<td>Name</td>
+    		<td colspan="2">TEL</td>
+    	</tr>
+    	<tr>
+    		<td>Bill</td>
+    		<td>13722222</td>
+    		<td>010-88822</td>
+    	</tr>
+    </table>
+    <br>
+    <table border="1">
+    	<tr>
+    		<th rowspan="2">Name</th>
+    		<td>Bill</td>
+    	</tr>
+    	<tr>
+    		<th>TEL</th>
+    		<td>13702222</td>
+    		<td>010-22883</td>
+    	</tr>
+    </table>
+   <div id="div1">
+   </div>
+  </body>
+</html>

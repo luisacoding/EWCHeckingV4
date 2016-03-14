@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>createElement.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  <div id = "testdiv"></div>
+    This is <em>my</em> HTML page. <br>
+    <script>
+    	window.onload = function() {
+    		var para = document.createElement("p");
+    		var testdiv = document.getElementById("testdiv");
+    		//var info = "nodeName: ";
+    		//info +=  para.nodeName;
+    		//info += " nodeType: ";
+    		//info += para.nodeType;
+    		//alert(info);
+    		testdiv.appendChild(para);
+    		var txt = document.createTextNode("Hello createTextNode.");
+    		para.appendChild(txt);
+    	}
+    </script>
+  </body>
+</html>

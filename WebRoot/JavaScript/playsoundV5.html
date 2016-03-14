@@ -1,0 +1,108 @@
+<html>
+<head>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="angularjs/angular.js"></script>    
+<script language="javascript"> 
+var soundA = "sound/Tower.mp3";
+
+function init(ind,t) {
+ind = ind.toUpperCase();
+var em = document.createElement("embed"); 
+          		     em.autostart="1" ;
+                     em.src="sound/"+ind+".wav";
+                     document.documentElement.appendChild(em);
+}
+var t=0;
+var sel = 0;
+function strSplice(str,sel) {
+ //var arr = str.split(',');
+
+	var arr = str;
+	console.log(typeof arr + ": " + arr);
+	if(sel>=0  && sel < arr.length ) {
+		init(arr[sel],t);
+	}else {return false;}	
+	console.log(arr[sel]);
+	sel= sel + 1 ;
+	setTimeout(function(){
+	strSplice(str,sel);
+ 	 },1000)
+ 	 
+}
+function openplay(sound) 
+{ 
+    if(flag==0){ 
+        setInterval(function() {
+        	var em = document.createElement("embed"); 
+          em.autostart="1" ;
+           em.src="sound/B.wav";
+           document.documentElement.appendChild(em);
+        },1000);
+    } 
+}
+/*
+ *	parse JSON 
+ */
+
+
+var jsonstr = { "records":[ {"Name":"Alfreds Futterkiste","City":"Berlin","Country":"Germany"}, {"Name":"Ana Trujillo Emparedados y helados","City":"Mexico D.F.","Country":"Mexico"}, {"Name":"Antonio Moreno Taquera","City":"Mexico D.F.","Country":"Mexico"}, {"Name":"Around the Horn","City":"London","Country":"UK"}, {"Name":"B's Beverages","City":"London","Country":"UK"}, {"Name":"Berglunds snabbkop","City":"Lulem","Country":"Sweden"}, {"Name":"Blauer See Delikatessen","City":"Mannheim","Country":"Germany"}, {"Name":"Blondel pure et fils","City":"Strasbourg","Country":"France"}, {"Name":"Bulido Comidas preparadas","City":"Madrid","Country":"Spain"}, {"Name":"Bon app'","City":"Marseille","Country":"France"}, {"Name":"Bottom Dollar Marketse","City":"Tsawassen","Country":"Canada"}, {"Name":"Cactus Comidas para llevar","City":"Buenos Aires","Country":"Argentina"}, {"Name":"Centro comercial Moctezuma","City":"Mexico D.F.","Country":"Mexico"}, {"Name":"Chop suey Chinese","City":"Bern","Country":"Switzerland"}, {"Name":"Comercio Mineiro","City":"Suo Paulo","Country":"Brazil"} ] };
+
+window.onload = function(){	
+	//var obj2=eval('('+test+')');  
+  	//alert(obj2.colsinfo);
+	window.onload();
+/*	var count = 0;
+
+      //  var str = "9,8,7,6,5,4,3,2,1,0,A,B,C,D,E,F,G,h,i,j,k,l,m,n,o,p,Q,r,s,t,u,v,w,x,y,z";
+      //  strSplice(str,sel);
+  	//var json = eval('({"foo": "bar"})');
+  	var jsonstr2 = {
+		"employees": [
+		{ "firstName":"John" , "lastName":"Doe" },
+		{ "firstName":"Anna" , "lastName":"Smith" },
+		{ "firstName":"Peter" , "lastName":"Jones" }
+		]
+		};
+	//console.log("jsonstr2's type: " + typeof jsonstr2 +"firstName: " 
+	//		+  jsonstr2.employees[0].firstName + jsonstr2.employees[0].lastName );
+  	//var json2 = eval('(jsonstr2)');
+  	//console.log(typeof json2.employees[2].firstName);// + ": " + json2[0].firstName);
+  	var comboStr ='';
+  	console.log(typeof comboStr);
+  	for(i=0; i<jsonstr2.employees.length; i++){
+  		comboStr = comboStr + jsonstr2.employees[i].firstName + jsonstr2.employees[i].lastName;
+  		console.log(comboStr); 		
+  	}
+	strSplice(comboStr,sel);
+	//var hex = "\u0064\u0072\u0065\u0061\u006D\u0064\u002E\u0063\u006F\u006D";
+	//console.log("hex: " + typeof hex + hex); */
+}
+</script> 
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+<table>
+  <tr>
+  <th align="left">name</th>
+  <th align="left">country</th>
+  </tr>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("angularjs/json/Customers.json")
+    .success(function (response) {$scope.names = response.records;});
+});
+</script>
+
+</body>
+</html>

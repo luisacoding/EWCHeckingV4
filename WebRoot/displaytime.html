@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>displaytime</title>
+	<script type="text/javascript" src="js/jq/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="js/wysiwyg.js"></script>
+	<style type="text/css">
+	.area{
+	 border: 1px solid purple;
+	}
+	</style>
+</head>
+<body>
+	<div id="txt"></div>
+	<form>
+  <input type="text" id="txt1" name="username" value="">
+  <input type="button" value="echo" onClick="alert(username.value)">
+</form>
+<input type="button" value="event" id='btn'></input>
+<input type="text" id="txt1" />
+<canvas id="drawing" with="200" height="200">A drawing of something</canvas>
+<script type="text/javascript">
+
+	(function (w){
+	console.log(typeof w);
+	 
+	function starttime(){
+		console.log(typeof w);
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		// add a zero in front of numbers <10
+		m=checkTime(m);
+		s=checkTime(s);
+		document.getElementById("txt").innerHTML= h + ":" + m + ":" + s;
+		setTimeout('starttime()',500);
+	}
+	function checkTime(i){
+		if (i < 10)
+			i = "0" + i;
+		return i;
+	}
+	starttime();
+	})(window);
+	
+var wysiwyg = new Wysiwyg();
+wysiwyg.el.insertBefore('.area');
+var btn = document.getElementById("btn");
+var handler = function(event){
+  switch(event.type){
+    case "click":
+      alert("Clicked");
+      break;
+      
+    case "mouseover":
+      event.target.style.backgroundColor = "red";
+      break;
+      
+    case "mouseout":
+      event.target.style.backgroundColor = "";
+      break;
+  }
+};
+
+btn.onclick = handler;
+btn.onmouseover = handler;
+btn.onmouseout = handler;
+
+var txt = document.getElementById("txt1");
+txt.addEventListener("keyup", function(event){
+	console.log(event.keyCode);
+}, false);
+
+
+</script>
+<div class="area" contenteditable></div>
+</body>
+</html>

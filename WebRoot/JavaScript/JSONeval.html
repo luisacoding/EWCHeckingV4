@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSONeval.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  <script type="text/javascript">
+  window.onload = function(){
+  	//alert( eval('({"foo": "bar"})') );
+  	var json = eval('({"foo": "bar"})');
+  	alert(json.foo);
+  	var jsonArray = eval('( [{"json":"姜明"},{"json":"肖慧姣"},{"json":"李文燕"},{"json":"董超平"},{"json":"麦惠玉"},{"json":"陈绮玲"},{"json":"谢玲梅"},{"json":"谭丽红"},{"json":"尚艳"},{"json":"赖爱晶"}] )');
+  	alert(jsonArray[1].json);
+
+  }
+  </script>
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+  </body>
+</html>

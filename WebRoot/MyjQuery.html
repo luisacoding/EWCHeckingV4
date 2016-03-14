@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>toArray demo</title>
+<style>
+span {
+color: red;
+}
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="js/jq/jquery-1.11.2.js" ></script>
+</head>
+<body>
+Reversed - <span></span>
+<div>One</div>
+<div>Two</div>
+<div>Three</div>
+<script>
+function disp( divs ) {
+var a = [];
+for ( var i = 0; i < divs.length; i++ ) {
+a.push( divs[ i ].innerHTML );
+}
+$( "span" ).text( a.join( " " ) );
+}
+disp( $( "div" ).toArray().reverse() );
+</script>
+</body>
+</html>

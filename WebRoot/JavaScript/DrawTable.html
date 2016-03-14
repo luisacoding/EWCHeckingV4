@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+</HEAD>
+
+<BODY>
+<script language="javascript">
+function insertrow(){
+i1.value==""?str=" ":str=i1.value;
+n=tt.rows.length;//行长度
+tt.insertRow(n);//插入一行
+for (i=0;i<=tt.rows(0).cells.length-1;i++){
+  tt.rows[n].insertCell(i);//在插入的行中插入单元格
+  tt.rows[n].cells[i].innerText=str;//放入TEXT
+  }
+}
+
+function insertcell(){
+i1.value==""?str=" ":str=i1.value;
+n=tt.rows[0].cells.length;//0行的单元格长度
+for (i=0;i<=tt.rows.length-1;i++){
+  tt.rows[i].insertCell(n);//在某行中插入单元格
+  tt.rows[i].cells[n].innerText=str;//放入TEXT
+  }
+}
+
+function deleterow(){
+n=tt.rows.length;//行长度
+if(n==1)return;
+tt.deleteRow(n-1);//删除某一行
+}
+
+function deletecell(){
+n=tt.rows[0].cells.length//0行的单元格长度
+if(n==1)return;
+for (i=0;i<=tt.rows.length-1;i++){
+  tt.rows[i].deleteCell(n-1);//删除某行的某一单元格
+  }
+}
+</script>
+<input type="button" value="insertrow" onclick="insertrow()">
+<input type="button" value="insertcell" onclick="insertcell()">
+<input type="button" value="delectrow" onclick="deleterow()">
+<input type="button" value="delectcell" onclick="deletecell()">
+<input name="i1" size="5" value="input" >
+<table id="tt" cellpadding=0 cellspacing=0  border="1">
+<tr><td>input</td></tr>
+</table>
+</BODY>
+</HTML>

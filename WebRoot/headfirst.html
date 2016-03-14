@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>headfirst.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src ="js/calendarDateInput.js"></script>
+	
+	<style type="text/css">
+	#container {
+		width: 500px;
+	}
+	
+	#head	{
+		background-color:	#99bbbb;
+	}
+	#menu 	{
+		background-color:	#ffff99;
+		height:	200px;
+		width:	100px;
+		float:	left;
+	}
+	#content	{
+		background-color:	#EEEEEE;
+		height:	200px;
+		width:	400px;
+		float:	left;
+	}
+	#footer	{
+		background-color:	#99bbbb;
+		clear:	both;
+		text-align:	center;
+		
+	}
+	</style>
+  </head>
+  
+  <body background="http://www.w3school.com.cn/clouds.gif">
+    <h1 align="center">Beer selection page</h1>
+  <div id="container">
+  	<div id="head">
+  		<h1>Main title</h1>
+  	</div>
+  	
+  	<div id="menu">
+  		<h2>Menu</h2>
+  		<ul>
+  			<li>CSS</li>
+  			<li>HTML</li>
+  			<li>JavaScript</li>
+  		</ul>
+  	</div>
+  	
+  	<div id="content">
+ 		<p>Content goes here</p>
+ 		<form  action="SelectBeer.do">
+    	select beer characteristics<p>
+    	Color:
+    	<select name="name" size="1">
+    		<option>light
+    		<option>amber
+    		<option>brown
+    		<option>dark
+    	</select>
+    	Body:
+    	<select name="body" size="1">
+    		<option>light
+    		<option>medium
+    		<option>heavy
+    	</select>
+    	<bar><bar>
+    	<center>
+    		<input type="submit">
+    	</center>
+    </form>
+	<div id="calendarDiv">
+		<form>
+		<script>DateInput('orderdate', true, 'DD-MON-YYYY')</script>
+		<input type="button" onClick="alert(this.form.value)" value="Show date value passed">
+		</form>
+	</div>
+	 	
+  	</div>
+  	
+  	<div id="footer">
+  	Copyleft lxtian@126.com
+  	</div>
+  </div>
+   
+  <div id="iframe">
+  <iframe src="layout1.html" width="500" height="200"></iframe>
+  </div>
+   
+  </body>
+</html>

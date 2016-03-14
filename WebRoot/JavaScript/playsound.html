@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+</head>
+<body>
+
+<audio id="sound" autoplay="autoplay" controls="controls">
+  <source id="source" src="sound/A.wav" type="audio/wav">
+</audio>
+
+<audio controls="controls">
+  <source src="sound/Tower.mp3" type="audio/mp3">
+</audio>
+
+<script>
+var playSound = function(){
+	
+}
+var sound_src= {
+	A : "sound/A.wav",
+	B : "sound/B.wav",
+	C : "sound/C.wav",
+	D : "sound/D.wav",
+};
+
+var source = document.getElementById("source");
+window.onload = function() {
+
+	alert(sound_src.A.length);
+	alert(typeof sound);
+	alert( source.getAttribute("src") );
+	source.setAttribute("src",sound_src.B);
+	alert(source.src);	
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+<script language="javascript"> 
+var soundA = "A";
+var flag = 0; //控制变量放在函数内起不到作用.
+function openplay(sound) 
+{ 
+    if(flag==0){ 
+        var em = document.createElement("embed"); 
+        em.autostart="1" ;
+        em.src="sound/Tower.mp3";   //路径,地址中不用反杠,用顺杠
+        document.documentElement.appendChild(em); 
+        flag=1; 
+    } 
+}
+
+
+function getURL(word){
+	var sound_src= {
+	A : "sound/A.wav",
+	B : "sound/B.wav",
+	C : "sound/C.wav",
+	D : "sound/D.wav",
+	Tower : "sound/Tower.mp3"
+	};
+	
+	if(url=="A" || url== "a")
+		return sound_src.A;
+	if(url=="B" || url== "b")
+		return sound_src.B;	
+	if(url=="C" || url== "c")
+		return sound_src.B;		
+}	
+
+window.onload = function(){	
+	//var obj2=eval('('+test+')');  
+  	//alert(obj2.colsinfo);
+	alert( getURL("b") );
+	//alert(sound_src.A);
+}
+
+</script> 
+</head>
+<body>
+<a href=# onclick="openplay()">播放</a>
+</body>
+</html>

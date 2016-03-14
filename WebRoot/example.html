@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example</title>
+</head>
+<body>
+
+<table>
+		<tbody>
+		<tr class="caption">
+			<td>name</td>
+			<td>age</td>
+			<td>sex</td>
+		</tr>
+		<tr class="item">
+			<td>a</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr class="item">
+			<td>b</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+				<tr class="item">
+			<td>c</td>
+			<td>3</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="result">
+
+</div>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('.item').click(function(e){
+
+		var _items = $(this).children('td');
+		var _id = _items[0].innerHTML;
+
+		//alert(_items[0].innerHTML);
+		getData(_id);
+
+		});
+
+		function getData(id){
+
+			$.post("/data/post/",{id:id},function(response,status){
+
+	            if(data && response.code === 200){
+
+	                console.log(data);
+
+	                $(".result").html(response.data);
+
+	            }else{
+	                console.log('err');
+	            }
+			});
+		}
+	})
+
+</script>
+
+</body>
+</html>

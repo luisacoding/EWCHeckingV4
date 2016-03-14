@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>form.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script src= "angular.js"></script>
+  </head>
+  
+  <body>
+<form name="signup_form"
+novalidate
+ng-submit="signupForm()"
+ng-controller="signupController">
+<fieldset>
+<legend>Signup</legend>
+<div class="row">
+<div class="large-12 columns">
+<label>Your name</label>
+<input type="text"
+placeholder="Name"
+name="name"
+ng-model="signup.name"
+ng-minlength="3"
+ng-maxlength="20" required />
+<div class="error"
+ng-show="signup_form.name.$dirty && signup_form.name.$invalid &&
+signup_form.submitted">
+<small class="error"
+ng-show="signup_form.name.$error.required">
+Your name is required.
+</small>
+<small class="error"
+ng-show="signup_form.name.$error.minlength">
+Your name is required to be at least 3 characters
+</small>
+<small class="error"
+ng-show="signup_form.name.$error.maxlength">
+Your name cannot be longer than 20 characters
+</small>
+</div>
+</div>
+</div>
+<button type="submit" >Submit</button>
+</fieldset>
+</form>
+<!--  
+
+<link type="text/css" rel="stylesheet" href="bootstrap.min.css">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script> -->
+  </body>
+</html>

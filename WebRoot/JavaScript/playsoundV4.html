@@ -1,0 +1,114 @@
+<html>
+<head>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="angularjs/angular.js"></script>    
+<script language="javascript"> 
+var soundA = "sound/Tower.mp3";
+var flag = 0; //控制变量放在函数内起不到作用.
+function init(ind,t) {
+ind = ind.toUpperCase();
+var em = document.createElement("embed"); 
+          		     em.autostart="1" ;
+                     em.src="sound/"+ind+".wav";
+                     document.documentElement.appendChild(em);
+                    // console.log('A');
+
+}
+var t=0;
+var sel = 0;
+function strSplice(str,sel) {
+ var arr = str.split(',');
+ 	if(sel>=arr.length) {
+ 	  return false;
+ 	 }
+ 	 init(arr[sel],t);
+ 	 sel= sel + 1 ;
+ 	 setTimeout(function(){
+ 	 strSplice(str,sel);
+ 	 
+ 	 },1000)
+ 	 
+}
+function openplay(sound) 
+{ 
+    if(flag==0){ 
+        setInterval(function() {
+        	var em = document.createElement("embed"); 
+          em.autostart="1" ;
+           em.src="sound/B.wav";
+           document.documentElement.appendChild(em);
+        },1000);
+       // em.src="sound/Tower.mp3";   //路径,地址中不用反杠,用顺杠
+         
+        // flag=1; 
+    } 
+}
+
+
+function getURL(url){
+	var sound_src= {
+	A : "sound/A.wav",
+	B : "sound/B.wav",
+	C : "sound/C.wav",
+	D : "sound/D.wav",
+	Tower : "sound/Tower.mp3"
+	};
+	
+	if(url=="A" || url== "a")
+		return sound_src.A;
+	if(url=="B" || url== "b")
+		return sound_src.B;	
+	if(url=="C" || url== "c")
+		return sound_src.B;		
+}	
+
+window.onload = function(){	
+	//var obj2=eval('('+test+')');  
+  	//alert(obj2.colsinfo);
+	
+	//alert(sound_src.A);
+	var count = 0;
+	/*var set=setInterval(function() {
+        	var em = document.createElement("embed"); 
+          	em.autostart="1" ;
+           em.src=getURL();
+           document.documentElement.appendChild(em);
+           count ++;
+           if(count>7) {
+           	clearInterval(set);
+           }
+        },1000);
+        */
+        var str = "9,8,7,6,5,4,3,2,1,0,A,B,C,D,E,F,G,h,i,j,k,l,m,n,o,p,Q,r,s,t,u,v,w,x,y,z";
+        strSplice(str,sel);
+}
+//console.log("hello.");
+</script> 
+</head>
+<body>
+<a href=# onclick="openplay('ABC')">播放</a>
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+<table>
+  <tr>
+  <th>name</th>
+  <th>country</th>
+  </tr>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("angularjs/json/Customers.json")
+    .success(function (response) {$scope.names = response.records;});
+});
+</script>
+
+</body>
+</html>

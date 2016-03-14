@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>clock.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script type="text/javascript" src="angular.js"></script>
+  </head>
+  
+  <body>
+  <a href="http://www.mi.com">
+  <a href="http://www.baidu.com">
+ <div ng-controller="UpdateClock">
+ 	<h1>CLOCK: {{ clock.now }}</h1>
+ </div>
+ <script type="text/javascript" src="js/UpdateClock.js"></script>
+ <script>
+ for(var i=0;i<10;i++)
+ 	console.log(i);
+ console.log(window.top);
+ console.log(Object.toString());
+ 
+ var person = new Object();
+ person.name="lxtian";
+ for(x in person){
+ console.log(x);
+ }
+ var obj ={
+ 	name:"lxtian",
+ 	id:2
+ }
+ console.log(obj instanceof Object);
+ // factory model
+ function createPerson(name, age, job){
+ 	var o = new Object();
+ 	o.name = name;
+ 	o.age = age;
+ 	o.job = job;
+ 	o.sayName = function(){
+ 		console.log(this.name);
+ 	};
+ 	
+ 	return o;
+ }
+ 
+ var p1= createPerson("lxtian", 25, "engineer");
+ var p2 = createPerson("jachy",24, "manager");
+ p1.sayName();
+ p2.sayName();
+ 
+ // construction model
+  function Person(name, age, job){
+ 	this.name = name;
+ 	this.age = age;
+ 	this.job = job;
+ 	this.sayName = sayName;
+ }
+function sayName(){
+	console.log(this.name);
+} 
+ 
+var person1 = new Person("lxtian2", 25, "engineer");
+var person2 = new Person("jachy2", 24, "manager");
+person1.sayName();
+person2.sayName();
+
+// prototype & constructor | hybridPattern
+function Person3(name, age, job){
+	this.name=name;
+	this.age=age;
+	this.job=job;
+	this.friends=["shely","rose"];
+}	
+Person3.prototype = {
+	constructor: Person3,
+	sayName : function(){
+		console.log("hybridPattern: " +this.name);
+	}
+}
+
+
+pr1 = new Person3("lxtian",25,"engineer");
+pr2 = new Person3("jachy",24,"teacher");
+console.log(pr1.friends);
+pr1.friends.push("kitty");
+console.log("pr1: " +pr1.friends);
+console.log("pr2: " +pr2.friends);
+pr1.sayName();
+pr2.sayName();
+
+// Combination inheritance 
+function SuperType(name){
+	this.name=name;
+	this.colors=["red","blue","green"];
+}
+
+SuperType.prototype.sayName = function(){
+	console.log(this.name);
+};
+
+function SubType(name,age){
+	// 继承属性
+	SuperType.call(this,name);
+	this.age = age;
+}
+// 继承方法
+SubType.prototype = new SuperType();
+
+SubType.prototype.sayAge = function(){
+	console.log(this.age);
+};
+
+var instance1 = new  SubType("lxtian",25);
+instance1.sayAge();
+instance1.sayName();
+// factorial
+var factorial = (
+	function f(num){
+		if (num < 1){
+			return 1;
+		}else {
+			console.trace();
+			return num * f(num-1);
+		}
+	}
+);
+console.info( factorial(3) );
+// closure 
+function createFunction(){
+	var result = new Array();
+	
+	for(var i=0; i<10; i++){
+		result[i] = function(){
+			return i;
+		};
+	}
+	
+	return result;
+}
+var c = createFunction();
+console.info(c[0].toString());
+ </script>
+  </body>
+</html>
